@@ -32,6 +32,7 @@
 ```
 
 Notes migration:
+
 - Vite retiré (fichiers supprimés: `index.html`, `vite.config.ts`, `src/main.tsx`).
 - Next.js App Router utilisé sous `src/app/`.
 - Alias `@/*` conservé (pointe sur `src/*`).
@@ -40,11 +41,10 @@ Notes migration:
 ## Démarrage
 
 - Installer: `npm install`
-- Dev: `npm run dev` (http://localhost:3000)
+- Dev: `npm run dev` (`http://localhost:3000`)
 - Build: `npm run build`
 - Prod: `npm start`
 
 Le dossier `build/` hérite de l’ancien setup Vite et n’est plus utilisé. Vous pouvez le supprimer en toute sécurité.
 
->[Server Deploy](https://lgc-lapetite-enfance.vercel.app/)
-  
+> [Server Deploy](https://lgc-lapetite-enfance.vercel.app/)
