@@ -20,7 +20,7 @@ export function Header({ isVisible = true }: HeaderProps) {
           {/* Logo */}
           <div className="header-logo">
             <img
-              src="/asset/logo_pe_03.png"
+              src="/asset/logo-trasparent.png"
               alt="Logo La Petite Enfance"
               className="header-logo__icon"
             />
