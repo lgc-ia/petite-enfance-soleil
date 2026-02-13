@@ -652,6 +652,20 @@
   color: var(--text-gray);
 }
 
+.footer-modal__list--links {
+  gap: 0.75rem;
+}
+
+.footer-modal__link {
+  color: var(--text-gray);
+  font-family: var(--font-open-sans), system-ui, sans-serif;
+  transition: color 0.15s ease-in-out;
+}
+
+.footer-modal__link:hover {
+  color: var(--green-primary);
+}
+
 @keyframes footerModalFade {
   from {
     opacity: 0;

@@ -3,34 +3,36 @@
 import { useEffect, useState } from "react";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 
+type FooterModal = "legal" | "sitemap" | null;
+
 export function Footer() {
-  const [isLegalOpen, setIsLegalOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState<FooterModal>(null);
 
   useEffect(() => {
-    if (!isLegalOpen) {
+    if (!activeModal) {
       return;
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsLegalOpen(false);
+        setActiveModal(null);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isLegalOpen]);
+  }, [activeModal]);
 
   const footerLinks: Array<{
     label: string;
     href?: string;
     newTab?: boolean;
-    modal?: "legal";
+    modal?: Exclude<FooterModal, null>;
   }> = [
     { label: "Qui sommes-nous ?", href: "https://lagrandeclasse.fr/", newTab: true },
     { label: "Mentions legales", modal: "legal" },
-    { label: "Plan du site", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "Plan du site", modal: "sitemap" },
+    { label: "Contact", href: "mailto:contact@lagrandeclasse.fr" },
   ];
 
   const socialLinks = [
@@ -92,6 +94,63 @@ export function Footer() {
     },
   ];
 
+  const sitemapLinks = [
+    { label: "Petite enfance", href: "#" },
+    { label: "Formation", href: "#" },
+    { label: "Réglementation", href: "#" },
+    { label: "Pratique professionnels", href: "#" },
+    { label: "Pédagogie", href: "#" },
+  ];
+
+  const modalContent = activeModal === "legal"
+    ? {
+        title: "Mentions legales",
+        titleId: "legal-modal-title",
+        body: (
+          <div className="footer-modal__body">
+            {legalSections.map((section) => (
+              <section key={section.title} className="footer-modal__section">
+                <h3 className="footer-modal__section-title">{section.title}</h3>
+                <ul className="footer-modal__list">
+                  {section.items.map((item) => (
+                    <li key={item.label}>
+                      <strong>{item.label} :</strong>{" "}
+                      {item.mailto ? (
+                        <>
+                          <a href={`mailto:${item.mailto}`}>{item.mailto}</a>
+                          {item.value ? ` - ${item.value}` : null}
+                        </>
+                      ) : (
+                        item.value
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+        ),
+      }
+    : activeModal === "sitemap"
+      ? {
+          title: "Plan du site",
+          titleId: "sitemap-modal-title",
+          body: (
+            <div className="footer-modal__body">
+              <ul className="footer-modal__list footer-modal__list--links">
+                {sitemapLinks.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href} className="footer-modal__link">
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ),
+        }
+      : null;
+
   return (
     <footer className="site-footer">
       <div className="footer__outer">
@@ -117,11 +176,11 @@ export function Footer() {
               <ul className="footer__links">
                 {footerLinks.map((link) => (
                   <li key={link.label}>
-                    {link.modal === "legal" ? (
+                    {link.modal ? (
                       <button
                         type="button"
                         className="footer__link footer__link--button"
-                        onClick={() => setIsLegalOpen(true)}
+                        onClick={() => setActiveModal(link.modal ?? null)}
                         aria-haspopup="dialog"
                       >
                         {link.label}
@@ -157,59 +216,38 @@ export function Footer() {
           </div>
 
 
-          {isLegalOpen ? (
+          {modalContent ? (
             <div
               className="footer-modal"
               role="dialog"
               aria-modal="true"
-              aria-labelledby="legal-modal-title"
+              aria-labelledby={modalContent.titleId}
             >
               <button
                 type="button"
                 className="footer-modal__overlay"
-                onClick={() => setIsLegalOpen(false)}
+                onClick={() => setActiveModal(null)}
                 aria-label="Fermer la fenetre"
               />
               <div className="footer-modal__content" role="document">
                 <div className="footer-modal__header">
-                  <h2 className="footer-modal__title" id="legal-modal-title">
+                  <h2 className="footer-modal__title" id={modalContent.titleId}>
                     <img
                       src="/asset/logo-trasparent.png"
                       alt="LGC Jeunesse"
                       className="footer-modal__logo"
                     />
-                    Mentions legales
+                    {modalContent.title}
                   </h2>
                   <button
                     type="button"
                     className="footer-modal__close"
-                    onClick={() => setIsLegalOpen(false)}
+                    onClick={() => setActiveModal(null)}
                   >
                     Fermer
                   </button>
                 </div>
-                <div className="footer-modal__body">
-                  {legalSections.map((section) => (
-                    <section key={section.title} className="footer-modal__section">
-                      <h3 className="footer-modal__section-title">{section.title}</h3>
-                      <ul className="footer-modal__list">
-                        {section.items.map((item) => (
-                          <li key={item.label}>
-                            <strong>{item.label} :</strong>{" "}
-                            {item.mailto ? (
-                              <>
-                                <a href={`mailto:${item.mailto}`}>{item.mailto}</a>
-                                {item.value ? ` - ${item.value}` : null}
-                              </>
-                            ) : (
-                              item.value
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </section>
-                  ))}
-                </div>
+                {modalContent.body}
               </div>
             </div>
           ) : null}
