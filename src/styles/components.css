@@ -1,6 +1,21 @@
 .page {
   min-height: 100vh;
   background-color: #ffffff;
+  position: relative;
+}
+
+.page::before {
+  content: "";
+  position: fixed;
+  inset: -10% 0 0 0;
+  background-image: url("/asset/sky-clouds.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  transform: translateY(var(--page-parallax, 0px));
+  will-change: transform;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .site-header {
@@ -49,6 +64,10 @@
 
 .header-main {
   padding: 1rem;
+  background-image: url("/asset/sky-clouds.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .header-main__inner {
@@ -70,6 +89,18 @@
   margin-right: 0.75rem;
   object-fit: contain;
   align-self: center;
+  animation: headerLogoFloat 5s ease-in-out infinite;
+  filter: drop-shadow(0 8px 16px rgba(255, 255, 255, 0.6));
+}
+
+@keyframes headerLogoFloat {
+  0%,
+  100% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
 }
 
 .site-title {
@@ -548,6 +579,144 @@
   font-family: var(--font-open-sans), system-ui, sans-serif;
 }
 
+.footer__link--button {
+  cursor: pointer;
+}
+
+.footer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: footerModalFade 0.35s ease-in-out;
+}
+
+.footer-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  border: 0;
+  cursor: pointer;
+  animation: footerModalFade 0.35s ease-in-out;
+}
+
+.footer-modal__content {
+  position: relative;
+  width: min(44rem, 100%);
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: var(--radius);
+  background-color: #ffffff;
+  color: var(--text-gray);
+  padding: 2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  animation: footerModalRise 0.35s ease-in-out;
+}
+
+.footer-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-modal__title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--text-xl);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  color: var(--text-black);
+}
+
+.footer-modal__logo {
+  width: 2.75rem;
+  height: 2.75rem;
+  object-fit: contain;
+}
+
+.footer-modal__close {
+  background-color: var(--green-primary);
+  color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.footer-modal__close:hover {
+  background-color: #4fb360;
+}
+
+.footer-modal__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-modal__section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-modal__section + .footer-modal__section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer-modal__section-title {
+  font-size: var(--text-lg);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  color: var(--text-black);
+}
+
+.footer-modal__list {
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 0;
+  list-style: none;
+  color: var(--text-gray);
+}
+
+.footer-modal__list--links {
+  gap: 0.75rem;
+}
+
+.footer-modal__link {
+  color: var(--text-gray);
+  font-family: var(--font-open-sans), system-ui, sans-serif;
+  transition: color 0.15s ease-in-out;
+}
+
+.footer-modal__link:hover {
+  color: var(--green-primary);
+}
+
+@keyframes footerModalFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes footerModalRise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .image-fallback {
   display: block;
   background-color: #f3f4f6;
@@ -652,7 +821,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  max-height: 100%;
   object-fit: cover;
   z-index: 1;
 }
@@ -663,7 +832,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(252, 245, 245, 0.2);
   z-index: 2;
 }
 

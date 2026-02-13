@@ -4,7 +4,6 @@ interface HeaderProps {
 
 export function Header({ isVisible = true }: HeaderProps) {
   const navItems = [
-    "Actus",
     "Petite Enfance",
     "Formation",
     "Réglementation",
