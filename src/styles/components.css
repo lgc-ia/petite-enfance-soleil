@@ -2,7 +2,6 @@
   min-height: 100vh;
   background-color: #ffffff;
   position: relative;
-  z-index: 0;
 }
 
 .page::before {
@@ -15,13 +14,8 @@
   opacity: 0.16;
   transform: translateY(var(--page-parallax, 0px));
   will-change: transform;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
-}
-
-.page > * {
-  position: relative;
-  z-index: 1;
 }
 
 .site-header {
@@ -96,7 +90,7 @@
   object-fit: contain;
   align-self: center;
   animation: headerLogoFloat 5s ease-in-out infinite;
-  filter: drop-shadow(0 8px 16px rgba(34, 34, 34, 0.4));
+  filter: drop-shadow(0 8px 16px rgba(255, 255, 255, 0.6));
 }
 
 @keyframes headerLogoFloat {
@@ -592,7 +586,7 @@
 .footer-modal {
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
