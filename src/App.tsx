@@ -34,6 +34,35 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    let rafId = 0;
+
+    const handleScroll = () => {
+      if (rafId) {
+        return;
+      }
+
+      rafId = window.requestAnimationFrame(() => {
+        const offset = window.scrollY * 0.25;
+        document.documentElement.style.setProperty(
+          "--page-parallax",
+          `${-offset}px`
+        );
+        rafId = 0;
+      });
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
+  }, []);
+
   // Mock data
   const recentArticles = [
     {
