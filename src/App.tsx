@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { FullPageScroll } from "./components/FullPageScroll";
 import { VideoHero } from "./components/VideoHero";
 import { RecentArticles } from "./components/RecentArticles";
 import { DossiersSection } from "./components/DossiersSection";
@@ -180,13 +181,14 @@ export default function App() {
 
   return (
     <div>
+      <FullPageScroll />
       <main>
         <VideoHero />
 
         <RecentArticles articles={recentArticles} />
-        
+
         <DossiersSection dossiers={dossiers} />
-        
+
         {/* Articles approfondis avec Sidebar */}
         <section className="section section--white reveal" data-reveal>
           <div className="container">
@@ -195,10 +197,10 @@ export default function App() {
               <div className="layout-3col__main">
                 <InDepthArticles articles={inDepthArticles} />
               </div>
-              
+
               {/* Sidebar - 1 column */}
               <div className="layout-3col__aside">
-                <Sidebar 
+                <Sidebar
                   newsItems={newsItems}
                   agendaItems={agendaItems}
                   podcasts={podcasts}

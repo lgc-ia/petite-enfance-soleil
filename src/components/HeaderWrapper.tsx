@@ -6,14 +6,43 @@ export function HeaderWrapper() {
   const [showHeader, setShowHeader] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Afficher le header après avoir scrollé au-delà de 80% de la hauteur de l'écran
-      const scrollThreshold = window.innerHeight * 0.8;
-      setShowHeader(window.scrollY > scrollThreshold);
+    let cleanupFn: (() => void) | null = null;
+
+    const initScrollListener = () => {
+      const lenis = (window as any).lenis;
+
+      if (!lenis) {
+        setTimeout(initScrollListener, 50);
+        return;
+      }
+
+      const handleScroll = () => {
+        // Calculer la position du titre "Activités"
+        const titleElement = document.getElementById("activites-title");
+        if (!titleElement) return;
+
+        const titlePosition = titleElement.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        // Afficher le header quand le titre arrive dans le viewport
+        setShowHeader(titlePosition <= windowHeight * 0.8);
+      };
+
+      // Vérifier immédiatement
+      handleScroll();
+
+      lenis.on("scroll", handleScroll);
+
+      cleanupFn = () => {
+        lenis.off("scroll", handleScroll);
+      };
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    initScrollListener();
+
+    return () => {
+      if (cleanupFn) cleanupFn();
+    };
   }, []);
 
   return <Header isVisible={showHeader} />;

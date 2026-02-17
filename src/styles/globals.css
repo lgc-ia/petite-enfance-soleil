@@ -174,7 +174,44 @@ body {
 
 html {
   font-size: var(--font-size);
+  /* Force scrollbar to always be visible to avoid layout shift */
+  overflow-y: scroll;
+  /* CSS scroll-snap for smooth fullpage effect */
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+  /* Disable scroll-snap when Lenis is active to avoid conflicts */
+  scroll-snap-type: none;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-stopped body {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Sections with snap points */
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 
