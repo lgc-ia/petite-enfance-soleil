@@ -211,8 +211,9 @@ export default function App() {
     <div>
       <main>
         <VideoHero />
-
-        <RecentArticles articles={recentArticles} />
+        <div id="menu-nav">
+          <RecentArticles articles={recentArticles} />
+        </div>
         
         <DossiersSection dossiers={dossiers} />
         

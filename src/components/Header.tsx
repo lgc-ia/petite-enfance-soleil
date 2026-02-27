@@ -1,14 +1,20 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 interface HeaderProps {
   isVisible?: boolean;
 }
 
 export function Header({ isVisible = true }: HeaderProps) {
+  const pathname = usePathname();
   const navItems = [
-    "Petite Enfance",
-    "Formation",
-    "Réglementation",
-    "Pratiques professionnels",
-    "Pédagogie",
+    { label: "Petite Enfance", href: "/#menu-nav", matchPath: "/" },
+    { label: "Formation", href: "/formation", matchPath: "/formation" },
+    { label: "Réglementation", href: "#", matchPath: null },
+    { label: "Pratiques professionnels", href: "#", matchPath: null },
+    { label: "Pédagogie", href: "#", matchPath: null },
   ];
 
   return (
@@ -34,13 +40,13 @@ export function Header({ isVisible = true }: HeaderProps) {
         <div className="header-nav__inner">
           <ul className="header-nav__list">
             {navItems.map((item) => (
-              <li key={item}>
-                <a
-                  href="#"
-                  className="header-nav__link"
+              <li key={item.label}>
+                <Link
+                  href={item.href}
+                  className={`header-nav__link${item.matchPath && pathname === item.matchPath ? " header-nav__link--active" : ""}`}
                 >
-                  {item}
-                </a>
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
