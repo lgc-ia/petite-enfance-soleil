@@ -57,7 +57,7 @@ export default function FormationPage() {
             </div>
             <div className="formation-hero__media">
               <img
-                src="https://images.unsplash.com/photo-1650504149601-f9fdd445c187?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXljYXJlJTIwY2hpbGRyZW4lMjBwbGF5aW5nfGVufDF8fHx8MTc2MTM0OTI4MHww&ixlib=rb-4.1.0&q=80&w=1080"
+                src="https://images.unsplash.com/photo-1485460535564-844461f37f77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxudXJzZXJ5JTIwZWR1Y2F0aW9ufGVufDF8fHx8MTc2MTQxMjM3NXww&ixlib=rb-4.1.0&q=80&w=1080"
                 alt="Nounou avec des enfants"
                 className="formation-hero__image"
               />
