@@ -1,6 +1,5 @@
 "use client";
 import { useEffect } from "react";
-import { FullPageScroll } from "./components/FullPageScroll";
 import { VideoHero } from "./components/VideoHero";
 import { RecentArticles } from "./components/RecentArticles";
 import { DossiersSection } from "./components/DossiersSection";
@@ -210,11 +209,12 @@ export default function App() {
 
   return (
     <div>
-      <FullPageScroll />
       <main>
         <VideoHero />
 
-        <RecentArticles articles={recentArticles} />
+        <div id="menu-nav">
+          <RecentArticles articles={recentArticles} />
+        </div>
         
         <DossiersSection dossiers={dossiers} />
 

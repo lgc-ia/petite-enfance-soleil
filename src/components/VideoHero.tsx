@@ -3,9 +3,10 @@
 export function VideoHero() {
 
   const scrollToContent = () => {
+    const menuSection = document.getElementById("menu-nav");
     const lenis = (window as any).lenis;
     if (lenis) {
-      lenis.scrollTo(window.innerHeight, {
+      lenis.scrollTo(menuSection ?? window.innerHeight, {
         duration: 1.2,
         easing: (t: number) => {
           return t < 0.5
@@ -13,7 +14,15 @@ export function VideoHero() {
             : 1 - Math.pow(-2 * t + 2, 3) / 2;
         },
       });
+      return;
     }
+
+    if (menuSection) {
+      menuSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
   };
 
   return (

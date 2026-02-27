@@ -95,8 +95,8 @@ export function Footer() {
   ];
 
   const sitemapLinks = [
-    { label: "Petite enfance", href: "#" },
-    { label: "Formation", href: "#" },
+    { label: "Petite enfance", href: "/#menu-nav" },
+    { label: "Formation", href: "/formation" },
     { label: "Réglementation", href: "#" },
     { label: "Pratique professionnels", href: "#" },
     { label: "Pédagogie", href: "#" },

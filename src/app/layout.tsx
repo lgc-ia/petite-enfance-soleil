@@ -3,7 +3,6 @@ import "../index.css";
 import "@/styles/globals.css";
 import "@/styles/semantic.css";
 import "@/styles/components.css";
-import { SmoothScroll } from "@/components/SmoothScroll";
 import { HeaderWrapper } from "@/components/HeaderWrapper";
 import { Footer } from "@/components/Footer";
 import { Poppins, Open_Sans, Baloo_2 } from "next/font/google";
@@ -51,13 +50,11 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${poppins.variable} ${openSans.variable} ${baloo.variable}`}>
       <body className="app-body">
-        <SmoothScroll>
-          <div className="page">
-            <HeaderWrapper />
-            <main>{children}</main>
-            <Footer />
-          </div>
-        </SmoothScroll>
+        <div className="page">
+          <HeaderWrapper />
+          <main>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
