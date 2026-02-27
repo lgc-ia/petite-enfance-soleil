@@ -1,42 +1,23 @@
 "use client";
-import { useEffect, useRef } from "react";
 
 export function VideoHero() {
-  const hasSnappedRef = useRef(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const heroHeight = window.innerHeight;
-
-      // Si on a scrollé plus de 20% du hero et qu'on n'a pas encore snap
-      if (scrollY > heroHeight * 0.2 && scrollY < heroHeight && !hasSnappedRef.current) {
-        hasSnappedRef.current = true;
-        window.scrollTo({
-          top: heroHeight,
-          behavior: "smooth",
-        });
-      }
-
-      // Reset le snap si on revient en haut
-      if (scrollY < heroHeight * 0.1) {
-        hasSnappedRef.current = false;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const scrollToContent = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
+    const lenis = (window as any).lenis;
+    if (lenis) {
+      lenis.scrollTo(window.innerHeight, {
+        duration: 1.2,
+        easing: (t: number) => {
+          return t < 0.5
+            ? 4 * t * t * t
+            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        },
+      });
+    }
   };
 
   return (
-    <section className="video-hero">
+    <section className="video-hero snap-section">
       <video
         className="video-hero__video"
         autoPlay
