@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 
@@ -97,9 +98,9 @@ export function Footer() {
   const sitemapLinks = [
     { label: "Petite enfance", href: "/#menu-nav" },
     { label: "Formation", href: "/formation" },
-    { label: "Réglementation", href: "#" },
-    { label: "Pratique professionnels", href: "#" },
-    { label: "Pédagogie", href: "#" },
+    { label: "Réglementation", href: "/reglementation" },
+    { label: "Pratiques professionnelles", href: "/pratiques-professionnelles" },
+    { label: "Pédagogie", href: "/pedagogie" },
   ];
 
   const modalContent = activeModal === "legal"
@@ -140,9 +141,13 @@ export function Footer() {
               <ul className="footer-modal__list footer-modal__list--links">
                 {sitemapLinks.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="footer-modal__link">
+                    <Link
+                      href={link.href}
+                      className="footer-modal__link"
+                      onClick={() => setActiveModal(null)}
+                    >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
