@@ -46,11 +46,13 @@ export default function PratiquesProfessionnellesPage() {
                 enfance: observation, travail en équipe, organisation et qualité
                 des échanges avec les familles.
               </p>
-              <ul className="formation-points">
+              <div className="formation-highlights">
                 {markers.map((item) => (
-                  <li key={item}>{item}</li>
+                  <div key={item} className="formation-highlight">
+                    {item}
+                  </div>
                 ))}
-              </ul>
+              </div>
               <a className="button button--primary" href="#">
                 Consulter les fiches métiers
               </a>

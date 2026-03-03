@@ -46,11 +46,13 @@ export default function ReglementationPage() {
                 d&apos;une structure d&apos;accueil: sécurité, hygiène, documents de
                 suivi et communication avec les familles.
               </p>
-              <ul className="formation-points">
+              <div className="formation-highlights">
                 {reminders.map((item) => (
-                  <li key={item}>{item}</li>
+                  <div key={item} className="formation-highlight">
+                    {item}
+                  </div>
                 ))}
-              </ul>
+              </div>
               <a className="button button--primary" href="#">
                 Télécharger la fiche pratique
               </a>

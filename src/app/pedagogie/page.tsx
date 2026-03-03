@@ -46,11 +46,13 @@ export default function PedagogiePage() {
                 adaptées à la petite enfance, avec des exemples d'activités, de
                 postures et d'environnements favorables aux apprentissages.
               </p>
-              <ul className="formation-points">
+              <div className="formation-highlights">
                 {values.map((item) => (
-                  <li key={item}>{item}</li>
+                  <div key={item} className="formation-highlight">
+                    {item}
+                  </div>
                 ))}
-              </ul>
+              </div>
               <a className="button button--primary" href="#">
                 Voir les propositions éducatives
               </a>

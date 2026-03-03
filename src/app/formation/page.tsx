@@ -46,11 +46,13 @@ export default function FormationPage() {
                 sécurité, éveil de l&apos;enfant, communication avec les parents et
                 organisation du quotidien.
               </p>
-              <ul className="formation-points">
+              <div className="formation-highlights">
                 {highlights.map((item) => (
-                  <li key={item}>{item}</li>
+                  <div key={item} className="formation-highlight">
+                    {item}
+                  </div>
                 ))}
-              </ul>
+              </div>
               <a className="button button--primary" href="#">
                 Demander le programme complet
               </a>
