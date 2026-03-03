@@ -1,0 +1,107 @@
+const approaches = [
+  {
+    title: "Jeu libre et exploration",
+    angle: "Développement global",
+    description:
+      "Contenu fictif sur la manière de préparer un environnement qui favorise l'initiative, la motricité et la curiosité des enfants.",
+  },
+  {
+    title: "Langage et interactions",
+    angle: "Accompagnement verbal",
+    description:
+      "Exemples simulés pour soutenir la parole, nommer les émotions et enrichir les échanges au quotidien.",
+  },
+  {
+    title: "Activités sensorielles",
+    angle: "Expérimentation",
+    description:
+      "Pistes fictives autour des matières, des sons, des couleurs et des manipulations adaptées aux différents âges.",
+  },
+  {
+    title: "Autonomie progressive",
+    angle: "Posture éducative",
+    description:
+      "Repères illustrant comment laisser le temps d'essayer, sécuriser l'environnement et valoriser les acquisitions de l'enfant.",
+  },
+];
+
+const values = [
+  "Inspirations pédagogiques simplifiées",
+  "Idées d'activités fictives par âge",
+  "Repères d'observation éducative",
+  "Supports pensés pour l'équipe terrain",
+];
+
+export default function PedagogiePage() {
+  return (
+    <div className="formation-page">
+      <section className="section section--white formation-hero">
+        <div className="container">
+          <div className="formation-hero__content">
+            <div className="formation-hero__text">
+              <p className="formation-kicker">Pédagogie</p>
+              <h1>Approches et propositions éducatives</h1>
+              <p className="formation-lead">
+                Une page fictive pour mettre en avant des approches pédagogiques
+                adaptées à la petite enfance, avec des exemples d'activités, de
+                postures et d'environnements favorables aux apprentissages.
+              </p>
+              <ul className="formation-points">
+                {values.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <a className="button button--primary" href="#">
+                Voir les propositions éducatives
+              </a>
+            </div>
+            <div className="formation-hero__media">
+              <img
+                src="https://images.unsplash.com/photo-1669663723170-bde6e7891176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0b2RkbGVyJTIwbGVhcm5pbmd8ZW58MXx8fHwxNzYxNDEyMzc2fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="Activité pédagogique avec de jeunes enfants"
+                className="formation-hero__image"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--muted">
+        <div className="container">
+          <h2 className="section-title section-title--lg">Pistes pédagogiques</h2>
+          <div className="cards formation-cards">
+            {approaches.map((approach) => (
+              <article key={approach.title} className="card formation-card">
+                <div className="card__body">
+                  <p className="formation-card__duration">{approach.angle}</p>
+                  <h3 className="card__title">{approach.title}</h3>
+                  <p className="card__excerpt">{approach.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--white">
+        <div className="container">
+          <div className="formation-banner">
+            <img
+              src="/asset/ballons.png"
+              alt="Illustration décorative"
+              className="formation-banner__image"
+            />
+            <div className="formation-banner__text">
+              <h2>Intention pédagogique</h2>
+              <p>
+                Proposer des contenus fictifs qui rendent les approches éducatives
+                plus lisibles, plus concrètes et directement transposables dans une
+                structure d'accueil.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

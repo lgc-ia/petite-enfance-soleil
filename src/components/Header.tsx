@@ -12,9 +12,13 @@ export function Header({ isVisible = true }: HeaderProps) {
   const navItems = [
     { label: "Petite Enfance", href: "/#menu-nav", matchPath: "/" },
     { label: "Formation", href: "/formation", matchPath: "/formation" },
-    { label: "Réglementation", href: "#", matchPath: null },
-    { label: "Pratiques professionnels", href: "#", matchPath: null },
-    { label: "Pédagogie", href: "#", matchPath: null },
+    { label: "Réglementation", href: "/reglementation", matchPath: "/reglementation" },
+    {
+      label: "Pratiques professionnelles",
+      href: "/pratiques-professionnelles",
+      matchPath: "/pratiques-professionnelles",
+    },
+    { label: "Pédagogie", href: "/pedagogie", matchPath: "/pedagogie" },
   ];
 
   return (
