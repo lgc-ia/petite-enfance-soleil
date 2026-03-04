@@ -27,20 +27,20 @@ export function Header({ isVisible = true }: HeaderProps) {
       <div className="header-main">
         <div className="header-main__inner">
           {/* Logo */}
-          <div className="header-logo">
+          <Link href="/" className="header-logo" aria-label="Retour à l'accueil">
             <img
               src="/asset/logo-trasparent.png"
               alt="Logo La Petite Enfance"
               className="header-logo__icon"
             />
-          </div>
+          </Link>
 
           {/* Right section */}
         </div>
       </div>
 
       {/* Navigation */}
-      <nav className="header-nav">
+      <nav className="header-nav" aria-label="Navigation principale">
         <div className="header-nav__inner">
           <ul className="header-nav__list">
             {navItems.map((item) => (
@@ -48,6 +48,7 @@ export function Header({ isVisible = true }: HeaderProps) {
                 <Link
                   href={item.href}
                   className={`header-nav__link${item.matchPath && pathname === item.matchPath ? " header-nav__link--active" : ""}`}
+                  aria-current={item.matchPath && pathname === item.matchPath ? "page" : undefined}
                 >
                   {item.label}
                 </Link>

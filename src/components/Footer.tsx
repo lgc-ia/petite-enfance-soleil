@@ -1,22 +1,54 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 type FooterModal = "legal" | "sitemap" | null;
 
 export function Footer() {
   const [activeModal, setActiveModal] = useState<FooterModal>(null);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const legalTitleId = useId();
+  const sitemapTitleId = useId();
 
   useEffect(() => {
     if (!activeModal) {
+      lastTriggerRef.current?.focus();
       return;
     }
+
+    closeButtonRef.current?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setActiveModal(null);
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialogRef.current) {
+        return;
+      }
+
+      const focusableElements = dialogRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+
+      if (focusableElements.length === 0) {
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
       }
     };
 
@@ -37,10 +69,10 @@ export function Footer() {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Facebook, href: "https://lagrandeclasse.fr/", label: "Facebook" },
     /*{ icon: Twitter, href: "#", label: "X" },*/
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Instagram, href: "https://lagrandeclasse.fr/", label: "Instagram" },
+    { icon: Linkedin, href: "https://lagrandeclasse.fr/", label: "LinkedIn" },
   ];
 
   const partners = [
@@ -106,7 +138,7 @@ export function Footer() {
   const modalContent = activeModal === "legal"
     ? {
         title: "Mentions legales",
-        titleId: "legal-modal-title",
+        titleId: legalTitleId,
         body: (
           <div className="footer-modal__body">
             {legalSections.map((section) => (
@@ -135,7 +167,7 @@ export function Footer() {
     : activeModal === "sitemap"
       ? {
           title: "Plan du site",
-          titleId: "sitemap-modal-title",
+          titleId: sitemapTitleId,
           body: (
             <div className="footer-modal__body">
               <ul className="footer-modal__list footer-modal__list--links">
@@ -185,8 +217,12 @@ export function Footer() {
                       <button
                         type="button"
                         className="footer__link footer__link--button"
-                        onClick={() => setActiveModal(link.modal ?? null)}
+                        onClick={(event) => {
+                          lastTriggerRef.current = event.currentTarget;
+                          setActiveModal(link.modal ?? null);
+                        }}
                         aria-haspopup="dialog"
+                        aria-expanded={activeModal === link.modal}
                       >
                         {link.label}
                       </button>
@@ -213,8 +249,10 @@ export function Footer() {
                   href={social.href}
                   className="footer__social-link"
                   aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <social.icon className="footer__social-icon" />
+                  <social.icon className="footer__social-icon" aria-hidden="true" />
                 </a>
               ))}
             </div>
@@ -234,13 +272,14 @@ export function Footer() {
                 onClick={() => setActiveModal(null)}
                 aria-label="Fermer la fenetre"
               />
-              <div className="footer-modal__content" role="document">
+              <div className="footer-modal__content" role="document" ref={dialogRef}>
                 <div className="footer-modal__header">
                   <h2 className="footer-modal__title" id={modalContent.titleId}>
                     <img
                       src="/asset/logo-trasparent.png"
-                      alt="LGC Jeunesse"
+                      alt=""
                       className="footer-modal__logo"
+                      aria-hidden="true"
                     />
                     {modalContent.title}
                   </h2>
@@ -248,6 +287,7 @@ export function Footer() {
                     type="button"
                     className="footer-modal__close"
                     onClick={() => setActiveModal(null)}
+                    ref={closeButtonRef}
                   >
                     Fermer
                   </button>

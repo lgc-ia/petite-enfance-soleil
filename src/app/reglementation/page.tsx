@@ -43,7 +43,7 @@ export default function ReglementationPage() {
               <h1>Réglementation petite enfance</h1>
               <p className="formation-lead">
                 Une page fictive pour présenter les grands repères réglementaires
-                d&apos;une structure d&apos;accueil: sécurité, hygiène, documents de
+                d'une structure d'accueil: sécurité, hygiène, documents de
                 suivi et communication avec les familles.
               </p>
               <div className="formation-highlights">
@@ -53,7 +53,7 @@ export default function ReglementationPage() {
                   </div>
                 ))}
               </div>
-              <a className="button button--primary" href="#">
+              <a className="button button--primary" href="mailto:contact@lagrandeclasse.fr?subject=Demande%20de%20fiche%20pratique">
                 Télécharger la fiche pratique
               </a>
             </div>
@@ -88,11 +88,11 @@ export default function ReglementationPage() {
       <section className="section section--white">
         <div className="container">
           <div className="formation-banner">
-            <img
-              src="/asset/pere_castor.png"
-              alt="Illustration décorative"
-              className="formation-banner__image"
-            />
+              <img
+                src="/asset/pere_castor.png"
+                alt=""
+                className="formation-banner__image"
+              />
             <div className="formation-banner__text">
               <h2>Pourquoi cette rubrique ?</h2>
               <p>

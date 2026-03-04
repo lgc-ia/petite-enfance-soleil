@@ -56,7 +56,7 @@ export function Sidebar({ newsItems, agendaItems, podcasts }: SidebarProps) {
       {/* Agenda */}
       <div className="sidebar-card">
         <h3 className="sidebar-card__title">
-          <Calendar className="sidebar-card__icon" />
+          <Calendar className="sidebar-card__icon" aria-hidden="true" />
           Agenda
         </h3>
         <div className="sidebar-agenda">
@@ -88,7 +88,7 @@ export function Sidebar({ newsItems, agendaItems, podcasts }: SidebarProps) {
               className="sidebar-podcast__item"
             >
               <div className="sidebar-podcast__icon">
-                <Play className="sidebar-podcast__icon-svg" />
+                <Play className="sidebar-podcast__icon-svg" aria-hidden="true" />
               </div>
               <p className="sidebar-podcast__text">
                 {podcast.title}

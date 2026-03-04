@@ -53,7 +53,7 @@ export default function PedagogiePage() {
                   </div>
                 ))}
               </div>
-              <a className="button button--primary" href="#">
+              <a className="button button--primary" href="mailto:contact@lagrandeclasse.fr?subject=Demande%20de%20propositions%20educatives">
                 Voir les propositions éducatives
               </a>
             </div>
@@ -88,11 +88,11 @@ export default function PedagogiePage() {
       <section className="section section--white">
         <div className="container">
           <div className="formation-banner">
-            <img
-              src="/asset/ballons.png"
-              alt="Illustration décorative"
-              className="formation-banner__image"
-            />
+              <img
+                src="/asset/ballons.png"
+                alt=""
+                className="formation-banner__image"
+              />
             <div className="formation-banner__text">
               <h2>Intention pédagogique</h2>
               <p>

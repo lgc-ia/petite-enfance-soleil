@@ -53,7 +53,7 @@ export default function PratiquesProfessionnellesPage() {
                   </div>
                 ))}
               </div>
-              <a className="button button--primary" href="#">
+              <a className="button button--primary" href="mailto:contact@lagrandeclasse.fr?subject=Demande%20de%20fiches%20metiers">
                 Consulter les fiches métiers
               </a>
             </div>
@@ -88,11 +88,11 @@ export default function PratiquesProfessionnellesPage() {
       <section className="section section--white">
         <div className="container">
           <div className="formation-banner">
-            <img
-              src="/asset/logo_pe_03.png"
-              alt="Illustration décorative"
-              className="formation-banner__image"
-            />
+              <img
+                src="/asset/logo_pe_03.png"
+                alt=""
+                className="formation-banner__image"
+              />
             <div className="formation-banner__text">
               <h2>Objectif de la rubrique</h2>
               <p>

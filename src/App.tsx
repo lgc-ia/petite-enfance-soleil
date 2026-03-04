@@ -209,55 +209,53 @@ export default function App() {
 
   return (
     <div>
-      <main>
-        <VideoHero />
+      <VideoHero />
 
-        <div id="menu-nav">
-          <section className="section section--white home-hook reveal" data-reveal>
-            <div className="container">
-              <h2 className="section-title section-title--lg home-hook__title">
-                LGC DOM, votre partenaire de confiance pour la garde d'enfants à domicile
-              </h2>
-              <p className="home-hook__text">
-                LGC DOM est votre entreprise de confiance et de proximité pour
-                prendre en charge la garde de votre enfant à votre domicile. Nos
-                professionnels, détenteurs de diplômes reconnus par l'Etat, ont
-                une solide expérience, et prennent soin de vos enfants.
-              </p>
-              <p className="home-hook__text">
-                Nos différents modes de garde d'enfants s'adaptent en fonction
-                de votre situation, de vos besoins et de l'âge de votre (vos)
-                enfant(s).
-              </p>
-            </div>
-          </section>
-
-          <RecentArticles articles={recentArticles} />
-        </div>
-        
-        <DossiersSection dossiers={dossiers} />
-
-        {/* Articles approfondis avec Sidebar */}
-        <section className="section section--white reveal" data-reveal>
+      <div id="menu-nav">
+        <section className="section section--white home-hook reveal" data-reveal>
           <div className="container">
-            <div className="layout-3col">
-              {/* Main content - 2 columns */}
-              <div className="layout-3col__main">
-                <InDepthArticles articles={inDepthArticles} />
-              </div>
-
-              {/* Sidebar - 1 column */}
-              <div className="layout-3col__aside">
-                <Sidebar
-                  newsItems={newsItems}
-                  agendaItems={agendaItems}
-                  podcasts={podcasts}
-                />
-              </div>
-            </div>
+            <h2 className="section-title section-title--lg home-hook__title">
+              LGC DOM, votre partenaire de confiance pour la garde d'enfants à domicile
+            </h2>
+            <p className="home-hook__text">
+              LGC DOM est votre entreprise de confiance et de proximité pour
+              prendre en charge la garde de votre enfant à votre domicile. Nos
+              professionnels, détenteurs de diplômes reconnus par l'Etat, ont
+              une solide expérience, et prennent soin de vos enfants.
+            </p>
+            <p className="home-hook__text">
+              Nos différents modes de garde d'enfants s'adaptent en fonction
+              de votre situation, de vos besoins et de l'âge de votre (vos)
+              enfant(s).
+            </p>
           </div>
         </section>
-      </main>
+
+        <RecentArticles articles={recentArticles} />
+      </div>
+      
+      <DossiersSection dossiers={dossiers} />
+
+      {/* Articles approfondis avec Sidebar */}
+      <section className="section section--white reveal" data-reveal>
+        <div className="container">
+          <div className="layout-3col">
+            {/* Main content - 2 columns */}
+            <div className="layout-3col__main">
+              <InDepthArticles articles={inDepthArticles} />
+            </div>
+
+            {/* Sidebar - 1 column */}
+            <div className="layout-3col__aside">
+              <Sidebar
+                newsItems={newsItems}
+                agendaItems={agendaItems}
+                podcasts={podcasts}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

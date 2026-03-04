@@ -53,7 +53,7 @@ export default function FormationPage() {
                   </div>
                 ))}
               </div>
-              <a className="button button--primary" href="#">
+              <a className="button button--primary" href="mailto:contact@lagrandeclasse.fr?subject=Demande%20de%20programme%20complet">
                 Demander le programme complet
               </a>
             </div>
@@ -88,11 +88,11 @@ export default function FormationPage() {
       <section className="section section--white">
         <div className="container">
           <div className="formation-banner">
-            <img
-              src="/asset/ballons.png"
-              alt="Ballons décoratifs"
-              className="formation-banner__image"
-            />
+              <img
+                src="/asset/ballons.png"
+                alt=""
+                className="formation-banner__image"
+              />
             <div className="formation-banner__text">
               <h2>Objectif pédagogique</h2>
               <p>

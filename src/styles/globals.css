@@ -47,7 +47,8 @@
   --text-4xl: 2.25rem;
   --color-title: rgb(52, 152, 219);
   /* Custom colors for petite enfance theme */
-  --green-primary: #5CC370;
+  --green-primary: #2f8f46;
+  --green-primary-hover: #246f36;
   --yellow-accent: #FFC83D;
   --gray-light: #F7F7F7;
   --text-black: #222222;
@@ -224,3 +225,22 @@ html.lenis body {
 .font-\[\'Open\ Sans\'\] { font-family: var(--font-open-sans), system-ui, sans-serif; }
 
 .text-main-title { color: var(--color-main-title); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+}

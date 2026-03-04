@@ -50,9 +50,14 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${poppins.variable} ${openSans.variable} ${baloo.variable}`}>
       <body className="app-body">
+        <a href="#main-content" className="skip-link">
+          Aller au contenu principal
+        </a>
         <div className="page">
           <HeaderWrapper />
-          <main>{children}</main>
+          <main id="main-content" tabIndex={-1}>
+            {children}
+          </main>
           <Footer />
         </div>
       </body>
