@@ -67,15 +67,15 @@ export default function App() {
   const recentArticles = [
     {
       id: 1,
-      title: "PLF : un amendement socialiste visait à réduire le CIFam à nouveau déposé",
-      excerpt: "Le Parlement examine actuellement le projet de loi de finances 2026. Un amendement visant à réduire les crédits d'impôt famille suscite de vives réactions dans le secteur de la petite enfance.",
+      title: "Garde d’enfants à domicile",
+      excerpt: "sorties d’école/crèche, mercredis, vacances, baby-sitting, horaires adaptés",
       imageUrl: "https://images.unsplash.com/photo-1650504149601-f9fdd445c187?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXljYXJlJTIwY2hpbGRyZW4lMjBwbGF5aW5nfGVufDF8fHx8MTc2MTM0OTI4MHww&ixlib=rb-4.1.0&q=80&w=1080",
       premium: true,
     },
     {
       id: 2,
-      title: "La cabane des 1000 jours s'installe définitivement aux Lilas",
-      excerpt: "Cette structure innovante dédiée à l'accompagnement des parents et jeunes enfants devient un lieu permanent d'accueil et de soutien à la parentalité.",
+      title: "Garde bilingue (EN/FR)",
+      excerpt: "Cours bilingue et activités en anglais pour les enfants de à partir de 3 ans, avec des professionnels formés et expérimentés",
       imageUrl: "https://images.unsplash.com/photo-1485460535564-844461f37f77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxudXJzZXJ5JTIwZWR1Y2F0aW9ufGVufDF8fHx8MTc2MTQxMjM3NXww&ixlib=rb-4.1.0&q=80&w=1080",
       premium: true,
     },

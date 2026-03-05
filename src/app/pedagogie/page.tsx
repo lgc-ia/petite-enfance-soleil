@@ -39,7 +39,7 @@ export default function PedagogiePage() {
         <div className="container">
           <div className="formation-hero__content">
             <div className="formation-hero__text">
-              <p className="formation-kicker">Pédagogie</p>
+              <p className="formation-kicker">Ateliers d’anglais – Méthodologie</p>
               <h1>Approches et propositions éducatives</h1>
               <p className="formation-lead">
                 Une page fictive pour mettre en avant des approches pédagogiques

@@ -26,10 +26,10 @@ const themes = [
 ];
 
 const reminders = [
-  "Veille réglementaire mensuelle simulée",
-  "Protocoles rédigés en langage simple",
+  "Intervenants diplômés",
+  "Continuité de service",
   "Supports internes à remettre aux équipes",
-  "Checklist d'audit fictive incluse",
+  "Suivi qualité",
 ];
 
 export default function ReglementationPage() {

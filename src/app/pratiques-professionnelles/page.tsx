@@ -26,7 +26,7 @@ const practices = [
 ];
 
 const markers = [
-  "Exemples de routines professionnelles",
+  "Présentiel/visio, individuel",
   "Fiches pratiques fictives par situation",
   "Repères de posture en équipe",
   "Cas concrets pour les transmissions",

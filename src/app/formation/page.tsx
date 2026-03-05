@@ -1,6 +1,6 @@
 const modules = [
   {
-    title: "Bases du métier de nounou",
+    title: "Formations professionnelles en anglais (CPF)",
     duration: "14 heures",
     description:
       "Comprendre le rôle professionnel, la relation avec les familles et les responsabilités quotidiennes.",
@@ -26,10 +26,10 @@ const modules = [
 ];
 
 const highlights = [
-  "Programme 100% orienté terrain",
-  "Études de cas réalistes",
-  "Supports téléchargeables inclus",
-  "Attestation de fin de formation",
+  "Test de positionnement",
+  "Parcours personnalisé (min 15h)",
+  "Certification Bright Language + compétences évaluées",
+  "Financement CPF + accompagnement administratif ",
 ];
 
 export default function FormationPage() {
@@ -40,7 +40,7 @@ export default function FormationPage() {
           <div className="formation-hero__content">
             <div className="formation-hero__text">
               <p className="formation-kicker">Formation professionnelle</p>
-              <h1>Formation des nounous</h1>
+              <h1>Formations professionnelles en anglais (CPF)</h1>
               <p className="formation-lead">
                 Un parcours fictif pour renforcer les compétences clés des nounous:
                 sécurité, éveil de l&apos;enfant, communication avec les parents et
