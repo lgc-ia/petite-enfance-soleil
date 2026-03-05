@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type MouseEvent } from "react";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 
-type FooterModal = "legal" | "sitemap" | null;
+type FooterModal = "legal" | "sitemap" | "contact" | null;
 
 export function Footer() {
   const [activeModal, setActiveModal] = useState<FooterModal>(null);
@@ -13,6 +13,7 @@ export function Footer() {
   const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
   const legalTitleId = useId();
   const sitemapTitleId = useId();
+  const contactTitleId = useId();
 
   useEffect(() => {
     if (!activeModal) {
@@ -65,7 +66,7 @@ export function Footer() {
     { label: "Qui sommes-nous ?", href: "https://lagrandeclasse.fr/", newTab: true },
     { label: "Mentions legales", modal: "legal" },
     { label: "Plan du site", modal: "sitemap" },
-    { label: "Contact", href: "mailto:contact@lagrandeclasse.fr" },
+    { label: "Contact", modal: "contact" },
   ];
 
   const socialLinks = [
@@ -135,6 +136,13 @@ export function Footer() {
     { label: "Pédagogie", href: "/pedagogie" },
   ];
 
+  const contactItems = [
+    { label: "Adresse", value: "9 rue de Saint-Denis, 93400 Saint-Ouen" },
+    { label: "Téléphone", value: "01.40.10.27.22", href: "tel:0140102722" },
+    { label: "Email", value: "contact@lagrandeclasse.fr", href: "mailto:contact@lagrandeclasse.fr" },
+    { label: "Site", value: "www.lagrandeclasse.fr", href: "https://lagrandeclasse.fr/" },
+  ];
+
   const modalContent = activeModal === "legal"
     ? {
         title: "Mentions legales",
@@ -186,7 +194,37 @@ export function Footer() {
             </div>
           ),
         }
-      : null;
+      : activeModal === "contact"
+        ? {
+            title: "Contact",
+            titleId: contactTitleId,
+            body: (
+              <div className="footer-modal__body">
+                <section className="footer-modal__section">
+                  <ul className="footer-modal__list">
+                    {contactItems.map((item) => (
+                      <li key={item.label}>
+                        <strong>{item.label} :</strong>{" "}
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            className="footer-modal__link"
+                            target={item.href.startsWith("http") ? "_blank" : undefined}
+                            rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          item.value
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              </div>
+            ),
+          }
+        : null;
 
   return (
     <footer className="site-footer">
@@ -214,16 +252,18 @@ export function Footer() {
                 {footerLinks.map((link) => (
                   <li key={link.label}>
                     {link.modal ? (
-                      <button
+                      <button 
                         type="button"
                         className="footer__link footer__link--button"
-                        onClick={(event) => {
+                        aria-label={link.label}
+                        onClick={(event: MouseEvent<HTMLButtonElement>) => {
                           lastTriggerRef.current = event.currentTarget;
                           setActiveModal(link.modal ?? null);
                         }}
+                        // aria-expanded={activeModal === link.modal ? "true" : "false"}
                         aria-haspopup="dialog"
-                        aria-expanded={activeModal === link.modal}
-                      >
+                  
+                        >
                         {link.label}
                       </button>
                     ) : (
