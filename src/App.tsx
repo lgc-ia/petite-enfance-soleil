@@ -215,18 +215,29 @@ export default function App() {
         <section className="section section--white home-hook reveal" data-reveal>
           <div className="container">
             <h2 className="section-title section-title--lg home-hook__title">
-              LGC DOM, votre partenaire de confiance pour la garde d'enfants à domicile
+              LGC Jeunesse, votre partenaire de confiance pour la garde d'enfants à domicile
             </h2>
             <p className="home-hook__text">
-              LGC DOM est votre entreprise de confiance et de proximité pour
+              <strong>LGC jeunesse</strong> est votre entreprise de confiance et de proximité pour
               prendre en charge la garde de votre enfant à votre domicile. Nos
               professionnels, détenteurs de diplômes reconnus par l'Etat, ont
               une solide expérience, et prennent soin de vos enfants.
+              <br />
+              Bien plus qu’une aide, nous sommes là à vos côtés durant tous les moments de votre vie. L’humain, la qualité et la proximité sont au coeur de nos actions.
             </p>
             <p className="home-hook__text">
               Nos différents modes de garde d'enfants s'adaptent en fonction
               de votre situation, de vos besoins et de l'âge de votre (vos)
               enfant(s).
+            </p>
+            <h2 className="section-title section-title--lg home-hook__title">
+              Nos valeurs 
+            </h2>
+            <p className="home-hook__text">
+              Placer nos clients et nos salariés au coeur de nos préoccupations est notre priorité. 
+              Nous sommes conscients que la satisfaction de nos clients passe par des interventions de qualité, 
+              ainsi notre organisation qui s’appuie sur 
+              les savoir-faire et savoir-être de notre personnel, permet de s’en assurer.
             </p>
           </div>
         </section>

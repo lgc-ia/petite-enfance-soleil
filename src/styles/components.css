@@ -1075,12 +1075,12 @@
   min-height: 45vh;
   display: flex;
   align-items: center;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding: .95em 0;
 }
 
 .home-hook__title {
-  margin-bottom: 1rem;
+  margin-bottom: .3rem;
+  padding: .25em 0;
 }
 
 .home-hook__text {
