@@ -55,7 +55,6 @@
       },
       "scripts": {
             "dev": "next dev --turbopack",
-            "prebuild": "npm run clean",
             "build": "next build",
             "build:clean": "npm run clean && npm run build",
             "clean": "node scripts/clean.mjs",
