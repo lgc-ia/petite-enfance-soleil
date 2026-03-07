@@ -140,7 +140,7 @@ export function Footer() {
     { label: "Adresse", value: "9 rue de Saint-Denis, 93400 Saint-Ouen" },
     { label: "Téléphone", value: "01.40.10.27.22", href: "tel:0140102722" },
     { label: "Email", value: "contact@lagrandeclasse.fr", href: "mailto:contact@lagrandeclasse.fr" },
-    { label: "Site", value: "www.lagrandeclasse.fr", href: "https://lagrandeclasse.fr/" },
+    { label: "Site officiel", value: "lagrandeclasse.fr", href: "https://lagrandeclasse.fr/" },
   ];
 
   const modalContent = activeModal === "legal"
