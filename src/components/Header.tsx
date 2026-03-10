@@ -16,12 +16,15 @@ export function Header({ isVisible = true }: HeaderProps) {
     { label: "Petite Enfance", href: "/#menu-nav", matchPath: "/" },
     { label: "Formation", href: "/formation", matchPath: "/formation" },
     { label: "Réglementation", href: "/reglementation", matchPath: "/reglementation" },
+    
     {
       label: "Pratiques professionnelles",
       href: "/pratiques-professionnelles",
       matchPath: "/pratiques-professionnelles",
     },
     { label: "Pédagogie", href: "/pedagogie", matchPath: "/pedagogie" },
+    { label: "Aides Financières ", href: "/aide_finance", matchPath: "/aide_finance" },
+  
   ];
 
   useEffect(() => {
