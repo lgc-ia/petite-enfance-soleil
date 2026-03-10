@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
   isVisible?: boolean;
@@ -9,6 +10,7 @@ interface HeaderProps {
 
 export function Header({ isVisible = true }: HeaderProps) {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navItems = [
     { label: "Petite Enfance", href: "/#menu-nav", matchPath: "/" },
     { label: "Formation", href: "/formation", matchPath: "/formation" },
@@ -21,12 +23,14 @@ export function Header({ isVisible = true }: HeaderProps) {
     { label: "Pédagogie", href: "/pedagogie", matchPath: "/pedagogie" },
   ];
 
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
   return (
     <header className={`site-header${isVisible ? " site-header--visible" : " site-header--hidden"}`}>
-      {/* Main header */}
       <div className="header-main">
         <div className="header-main__inner">
-          {/* Logo */}
           <Link href="/" className="header-logo" aria-label="Retour à l'accueil">
             <img
               src="/asset/logo-trasparent.png"
@@ -34,13 +38,26 @@ export function Header({ isVisible = true }: HeaderProps) {
               className="header-logo__icon"
             />
           </Link>
-
-          {/* Right section */}
+          <button
+            type="button"
+            className={`header-menu-button${isMenuOpen ? " header-menu-button--open" : ""}`}
+        /*     aria-expanded={isMenuOpen} */
+            aria-controls="primary-navigation"
+            aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            <span className="header-menu-button__line" />
+            <span className="header-menu-button__line" />
+            <span className="header-menu-button__line" />
+          </button>
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav className="header-nav" aria-label="Navigation principale">
+      <nav
+        id="primary-navigation"
+        className={`header-nav${isMenuOpen ? " header-nav--open" : ""}`}
+        aria-label="Navigation principale"
+      >
         <div className="header-nav__inner">
           <ul className="header-nav__list">
             {navItems.map((item) => (
@@ -49,6 +66,7 @@ export function Header({ isVisible = true }: HeaderProps) {
                   href={item.href}
                   className={`header-nav__link${item.matchPath && pathname === item.matchPath ? " header-nav__link--active" : ""}`}
                   aria-current={item.matchPath && pathname === item.matchPath ? "page" : undefined}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
                 </Link>

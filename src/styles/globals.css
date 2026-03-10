@@ -244,3 +244,9 @@ html.lenis body {
     scroll-snap-type: none;
   }
 }
+
+@media (max-width: 48rem) {
+  html {
+    scroll-snap-type: none;
+  }
+}
