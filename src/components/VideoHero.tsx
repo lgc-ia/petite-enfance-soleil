@@ -45,9 +45,10 @@ export function VideoHero() {
         muted
         loop
         playsInline
+        preload="metadata"
         aria-hidden="true"
       >
-        <source src="/asset/video_LGC.mp4" type="video/mp4" />
+        <source src="/asset/lgc-jeunesse-video.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas la lecture de vidéos.
       </video>
 
@@ -67,7 +68,7 @@ export function VideoHero() {
         onClick={scrollToContent}
         aria-label="Défiler vers le contenu"
       >
-        <span className="scroll-indicator__text" aria-label="descendre vers l'accueil">Descendre</span>
+        <span className="scroll-indicator__text" aria-label="descendre vers l'accueil">Aller à la page</span>
         <svg
           className="scroll-indicator__icon"
           width="24"

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const modules = [
   {
     title: "Formations professionnelles en anglais (CPF)",
@@ -58,10 +60,14 @@ export default function FormationPage() {
               </a>
             </div>
             <div className="formation-hero__media">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1485460535564-844461f37f77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxudXJzZXJ5JTIwZWR1Y2F0aW9ufGVufDF8fHx8MTc2MTQxMjM3NXww&ixlib=rb-4.1.0&q=80&w=1080"
                 alt="Nounou avec des enfants"
                 className="formation-hero__image"
+                width={1080}
+                height={720}
+                priority
+                sizes="(max-width: 768px) 100vw, 22rem"
               />
             </div>
           </div>
@@ -88,10 +94,13 @@ export default function FormationPage() {
       <section className="section section--white">
         <div className="container">
           <div className="formation-banner">
-              <img
+              <Image
                 src="/asset/ballons.png"
                 alt=""
                 className="formation-banner__image"
+                width={176}
+                height={176}
+                sizes="9rem"
               />
             <div className="formation-banner__text">
               <h2>Objectif pédagogique</h2>

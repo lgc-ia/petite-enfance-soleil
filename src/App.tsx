@@ -88,8 +88,8 @@ export default function App() {
     },
     {
       id: 4,
-      title: "L'accueil de la petite enfance au Danemark",
-      excerpt: "Découvrez les spécificités du modèle danois d'accueil des jeunes enfants, reconnu pour sa qualité et son approche pédagogique innovante.",
+      title: "L'accueil de la petite enfance",
+      excerpt: "Notre projet d’accueil repose sur une approche bienveillante, individualisée et respectueuse du développement naturel de chaque enfant",
       imageUrl: "https://images.unsplash.com/photo-1614586178105-eb3d7739de07?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdXR1bW4lMjBjaGlsZHJlbnxlbnwxfHx8fDE3NjE0MTIzNzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       premium: true,
     },
