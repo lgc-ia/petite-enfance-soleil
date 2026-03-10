@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const themes = [
   {
     title: "Accueil et sécurité",
@@ -58,10 +60,14 @@ export default function ReglementationPage() {
               </a>
             </div>
             <div className="formation-hero__media">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1567746455504-cb3213f8f5b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVzY2hvb2wlMjBjbGFzc3Jvb218ZW58MXx8fHwxNzYxNDA1MzgxfDA&ixlib=rb-4.1.0&q=80&w=1080"
                 alt="Espace d'accueil en petite enfance"
                 className="formation-hero__image"
+                width={1080}
+                height={720}
+                priority
+                sizes="(max-width: 768px) 100vw, 22rem"
               />
             </div>
           </div>
@@ -88,10 +94,13 @@ export default function ReglementationPage() {
       <section className="section section--white">
         <div className="container">
           <div className="formation-banner">
-              <img
+              <Image
                 src="/asset/pere_castor.png"
                 alt=""
                 className="formation-banner__image"
+                width={176}
+                height={176}
+                sizes="9rem"
               />
             <div className="formation-banner__text">
               <h2>Pourquoi cette rubrique ?</h2>

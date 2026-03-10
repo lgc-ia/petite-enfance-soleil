@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -32,10 +33,14 @@ export function Header({ isVisible = true }: HeaderProps) {
       <div className="header-main">
         <div className="header-main__inner">
           <Link href="/" className="header-logo" aria-label="Retour à l'accueil">
-            <img
+            <Image
               src="/asset/logo-trasparent.png"
               alt="Logo La Petite Enfance"
               className="header-logo__icon"
+              width={88}
+              height={88}
+              priority
+              sizes="5.5rem"
             />
           </Link>
           <button

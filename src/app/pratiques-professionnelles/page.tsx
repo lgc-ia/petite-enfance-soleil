@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const practices = [
   {
     title: "Organisation de la journée",
@@ -58,10 +60,14 @@ export default function PratiquesProfessionnellesPage() {
               </a>
             </div>
             <div className="formation-hero__media">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1541692641319-981cc79ee10a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraW5kZXJnYXJ0ZW4lMjBhY3Rpdml0aWVzfGVufDF8fHx8MTc2MTM1MjExM3ww&ixlib=rb-4.1.0&q=80&w=1080"
                 alt="Professionnels en activité avec des enfants"
                 className="formation-hero__image"
+                width={1080}
+                height={720}
+                priority
+                sizes="(max-width: 768px) 100vw, 22rem"
               />
             </div>
           </div>
@@ -88,10 +94,13 @@ export default function PratiquesProfessionnellesPage() {
       <section className="section section--white">
         <div className="container">
           <div className="formation-banner">
-              <img
+              <Image
                 src="/asset/logo_pe_03.png"
                 alt=""
                 className="formation-banner__image"
+                width={176}
+                height={176}
+                sizes="9rem"
               />
             <div className="formation-banner__text">
               <h2>Objectif de la rubrique</h2>

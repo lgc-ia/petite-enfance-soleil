@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useId, useRef, useState, type MouseEvent } from "react";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
@@ -315,11 +316,14 @@ export function Footer() {
               <div className="footer-modal__content" role="document" ref={dialogRef}>
                 <div className="footer-modal__header">
                   <h2 className="footer-modal__title" id={modalContent.titleId}>
-                    <img
+                    <Image
                       src="/asset/logo-trasparent.png"
                       alt=""
                       className="footer-modal__logo"
                       aria-hidden="true"
+                      width={44}
+                      height={44}
+                      sizes="2.75rem"
                     />
                     {modalContent.title}
                   </h2>
