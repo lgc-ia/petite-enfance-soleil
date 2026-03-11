@@ -5,7 +5,7 @@ const aids = [
     title: "Complément de libre choix du mode de garde",
     scope: "Aide mensuelle",
     description:
-      "Présentation fictive d'un accompagnement pour réduire le coût de la garde à domicile selon l'âge de l'enfant et les revenus du foyer.",
+      "Accompagnement pour réduire le coût de la garde à domicile selon l'âge de l'enfant et les revenus du foyer.",
   },
   {
     title: "Crédit d'impôt services à la personne",
@@ -17,21 +17,21 @@ const aids = [
     title: "Aides employeur ou comité social",
     scope: "Soutien complémentaire",
     description:
-      "Exemples fictifs de participation financière proposée par certaines entreprises pour alléger les frais de garde des familles.",
+      "Participation financière proposée par certaines entreprises pour alléger les frais de garde des familles.",
   },
   {
     title: "Accompagnement administratif",
     scope: "Démarches simplifiées",
     description:
-      "Repères fictifs pour constituer un dossier, réunir les justificatifs utiles et suivre les échéances sans se disperser.",
+      "Repères pour constituer un dossier, réunir les justificatifs utiles et suivre les échéances sans se disperser.",
   },
 ];
 
 const highlights = [
-  "Simulations fictives de budget",
-  "Repères CAF et fiscalité simplifiés",
-  "Exemples de dossiers familles",
-  "Accompagnement administratif pas à pas",
+  "Estimer votre budget grâce à nos simulations",
+  "Identifier les aides de la CAF auxquelles vous avez droit",
+  "Comparer garde simple et garde partagée",
+  "Comprendre comment déclarer une garde occasionnelle",
 ];
 
 export default function AideFinancePage() {
@@ -42,11 +42,13 @@ export default function AideFinancePage() {
           <div className="formation-hero__content">
             <div className="formation-hero__text">
               <p className="formation-kicker">Aides financières</p>
-              <h1>Solutions de financement pour la garde d&apos;enfants</h1>
+              <h1>Les aides financières pour la garde d’enfants à domicile </h1>
               <p className="formation-lead">
-                Une page fictive pour présenter les principaux leviers de financement
-                mobilisables par les familles: aides publiques, avantages fiscaux,
-                participation employeur et accompagnement dans les démarches.
+               Choisir la garde d’enfants à domicile est souvent plus accessible 
+               qu’on ne le pense. Grâce aux aides disponibles, 
+               le coût peut être fortement réduit selon vos revenus,
+               l’âge de vos enfants et le nombre d’heures de garde.
+
               </p>
               <div className="formation-highlights">
                 {highlights.map((item) => (
