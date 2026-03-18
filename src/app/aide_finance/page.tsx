@@ -119,9 +119,20 @@ export default function AideFinancePage() {
           <div className="footer-modal__content finance-modal__content" role="document">
             <div className="footer-modal__header finance-modal__header">
               <div className="finance-modal__intro">
-                <span className="finance-modal__eyebrow">
-                  Estimation et tarifs
-                </span>
+                <div className="finance-modal__eyebrow-row">
+                  <Image
+                    src="/asset/ballons.png"
+                    alt="Illustration ballons"
+                    className="finance-modal__intro-image"
+                    width={48}
+                    height={48}
+                    sizes="48px"
+                    loading="lazy"
+                  />
+                  <span className="finance-modal__eyebrow">
+                    Estimation et tarifs
+                  </span>
+                </div>
                 <h2 className="footer-modal__title finance-modal__title" id="estimate-modal-title">
                   TARIFS GARDE D&apos;ENFANTS A DOMICILE
                 </h2>
