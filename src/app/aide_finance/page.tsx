@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const aids = [
   {
@@ -35,6 +38,24 @@ const highlights = [
 ];
 
 export default function AideFinancePage() {
+  const [isEstimateModalOpen, setIsEstimateModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isEstimateModalOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsEstimateModalOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isEstimateModalOpen]);
+
   return (
     <div className="formation-page">
       <section className="section section--white formation-hero">
@@ -57,12 +78,15 @@ export default function AideFinancePage() {
                   </div>
                 ))}
               </div>
-              <a
+              <button
+                type="button"
                 className="button button--primary"
-                href="mailto:contact@lagrandeclasse.fr?subject=Demande%20d%27informations%20sur%20les%20aides%20financieres"
+                onClick={() => setIsEstimateModalOpen(true)}
+                aria-haspopup="dialog"
+         
               >
                 Demander une estimation
-              </a>
+              </button>
             </div>
             <div className="formation-hero__media">
               <Image
@@ -78,6 +102,123 @@ export default function AideFinancePage() {
           </div>
         </div>
       </section>
+
+      {isEstimateModalOpen ? (
+        <div
+          className="footer-modal finance-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="estimate-modal-title"
+        >
+          <button
+            type="button"
+            className="footer-modal__overlay"
+            onClick={() => setIsEstimateModalOpen(false)}
+            aria-label="Fermer la fenetre"
+          />
+          <div className="footer-modal__content finance-modal__content" role="document">
+            <div className="footer-modal__header finance-modal__header">
+              <div className="finance-modal__intro">
+                <span className="finance-modal__eyebrow">
+                  Estimation et tarifs
+                </span>
+                <h2 className="footer-modal__title finance-modal__title" id="estimate-modal-title">
+                  TARIFS GARDE D&apos;ENFANTS A DOMICILE
+                </h2>
+              </div>
+              <button
+                type="button"
+                className="footer-modal__close"
+                onClick={() => setIsEstimateModalOpen(false)}
+              >
+                Fermer
+              </button>
+            </div>
+            <div className="footer-modal__body finance-modal__body">
+              <section className="footer-modal__section finance-modal__section finance-modal__section--highlight">
+                <p className="finance-modal__lead">
+                  Les tarifs sont établis sur devis personnalisé en fonction :
+                </p>
+                <ul className="finance-modal__list">
+                  <li>Du nombre d&apos;heures mensuelles</li>
+                  <li>De l&apos;âge de l&apos;enfant</li>
+                  <li>
+                    Des horaires spécifiques (soirées, week-end, horaires
+                    atypiques)
+                  </li>
+                </ul>
+              </section>
+              <section className="footer-modal__section finance-modal__section finance-modal__notice">
+                <p>
+                  Devis gratuit obligatoire pour toute prestation supérieure à
+                  100 € TTC / mois.
+                </p>
+              </section>
+              <section className="footer-modal__section finance-modal__section">
+                <h3 className="footer-modal__section-title">Aides possibles :</h3>
+                <ul className="finance-modal__list">
+                  <li>Complément de libre choix du mode de garde (CAF)</li>
+                  <li>Crédit d&apos;impôt 50 % selon législation en vigueur</li>
+                </ul>
+              </section>
+              <section className="footer-modal__section finance-modal__section finance-modal__section--soft">
+                <p>
+                  Un accompagnement administratif est proposé pour faciliter vos
+                  démarches.
+                </p>
+              </section>
+              <section className="footer-modal__section finance-modal__section">
+                <h3 className="footer-modal__section-title finance-modal__section-heading">
+                  TARIFS ATELIERS D&apos;ANGLAIS ENFANTS
+                </h3>
+                <div className="finance-modal__pricing-grid">
+                  <div className="finance-modal__pricing-card">
+                    <p className="finance-modal__pricing-title">
+                      Forfaits hebdomadaires
+                    </p>
+                    <ul className="finance-modal__list">
+                      <li>2 heures par semaine : 100 €</li>
+                      <li>4 heures par semaine : 160 €</li>
+                      <li>6 heures par semaine : 240 €</li>
+                      <li>8 heures par semaine : 290 €</li>
+                    </ul>
+                  </div>
+                  <div className="finance-modal__pricing-card">
+                    <p className="finance-modal__pricing-title">
+                      Formules Mercredi
+                    </p>
+                    <ul className="finance-modal__list">
+                      <li>Mercredi matin (9h00 - 12h00) : 140 €</li>
+                      <li>Mercredi après-midi (14h00 - 18h00) : 192 €</li>
+                      <li>Mercredi journée complète (9h00 - 18h00) : 240 €</li>
+                    </ul>
+                  </div>
+                  <div className="finance-modal__pricing-card finance-modal__pricing-card--wide">
+                    <p className="finance-modal__pricing-title">
+                      Vacances scolaires
+                    </p>
+                    <ul className="finance-modal__list">
+                      <li>Matin 9h00 - 12h00 avec contrat : 24 €</li>
+                      <li>Matin 9h00 - 12h00 sans contrat : 30 €</li>
+                      <li>Après-midi 14h00 - 18h00 avec contrat : 25 €</li>
+                      <li>Après-midi 14h00 - 18h00 sans contrat : 30 €</li>
+                      <li>Journée vacances sans contrat : 50 €</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+              <div className="finance-modal__actions">
+                <a
+                  className="button button--primary finance-modal__contact-button"
+                  href="mailto:contact@lagrandeclasse.fr?subject=Demande%20d%27information%20-%20Aides%20financieres%20et%20tarifs"
+                >
+                  Nous contacter
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       <section className="section section--muted">
         <div className="container">
