@@ -132,6 +132,7 @@ export function Footer() {
   const sitemapLinks = [
     { label: "Petite enfance", href: "/#menu-nav" },
     { label: "Formation", href: "/formation" },
+    { label: "Aides Finance", href: "/aide_finance" },
     { label: "Réglementation", href: "/reglementation" },
     { label: "Pratiques professionnelles", href: "/pratiques-professionnelles" },
     { label: "Pédagogie", href: "/pedagogie" },
