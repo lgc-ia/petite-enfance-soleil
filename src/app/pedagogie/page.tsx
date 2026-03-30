@@ -61,7 +61,7 @@ export default function PedagogiePage() {
             </div>
             <div className="formation-hero__media">
               <Image
-                src="https://images.unsplash.com/photo-1669663723170-bde6e7891176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0b2RkbGVyJTIwbGVhcm5pbmd8ZW58MXx8fHwxNzYxNDEyMzc2fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                src="/asset/toddler-learning.jpg"
                 alt="Activité pédagogique avec de jeunes enfants"
                 className="formation-hero__image"
                 width={1080}
@@ -101,6 +101,7 @@ export default function PedagogiePage() {
                 width={176}
                 height={176}
                 sizes="9rem"
+                loading="lazy"
               />
             <div className="formation-banner__text">
               <h2>Intention pédagogique</h2>

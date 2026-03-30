@@ -61,7 +61,7 @@ export default function PratiquesProfessionnellesPage() {
             </div>
             <div className="formation-hero__media">
               <Image
-                src="https://images.unsplash.com/photo-1541692641319-981cc79ee10a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraW5kZXJnYXJ0ZW4lMjBhY3Rpdml0aWVzfGVufDF8fHx8MTc2MTM1MjExM3ww&ixlib=rb-4.1.0&q=80&w=1080"
+                src="/asset/kindergarten-activities.jpg"
                 alt="Professionnels en activité avec des enfants"
                 className="formation-hero__image"
                 width={1080}
@@ -101,6 +101,7 @@ export default function PratiquesProfessionnellesPage() {
                 width={176}
                 height={176}
                 sizes="9rem"
+                loading="lazy"
               />
             <div className="formation-banner__text">
               <h2>Objectif de la rubrique</h2>

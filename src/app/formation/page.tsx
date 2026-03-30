@@ -61,7 +61,7 @@ export default function FormationPage() {
             </div>
             <div className="formation-hero__media">
               <Image
-                src="https://images.unsplash.com/photo-1485460535564-844461f37f77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxudXJzZXJ5JTIwZWR1Y2F0aW9ufGVufDF8fHx8MTc2MTQxMjM3NXww&ixlib=rb-4.1.0&q=80&w=1080"
+                src="/asset/nursery-education.jpg"
                 alt="Nounou avec des enfants"
                 className="formation-hero__image"
                 width={1080}
@@ -101,6 +101,7 @@ export default function FormationPage() {
                 width={176}
                 height={176}
                 sizes="9rem"
+                loading="lazy"
               />
             <div className="formation-banner__text">
               <h2>Objectif pédagogique</h2>

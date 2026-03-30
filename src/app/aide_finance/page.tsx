@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+const MODAL_EXIT_DURATION_MS = 260;
+
 const aids = [
   {
     title: "Complément de libre choix du mode de garde",
@@ -39,15 +41,20 @@ const highlights = [
 
 export default function AideFinancePage() {
   const [isEstimateModalOpen, setIsEstimateModalOpen] = useState(false);
+  const [isEstimateModalRendered, setIsEstimateModalRendered] = useState(false);
+  const [isEstimateModalClosing, setIsEstimateModalClosing] = useState(false);
 
   useEffect(() => {
     if (!isEstimateModalOpen) {
       return;
     }
 
+    setIsEstimateModalRendered(true);
+    setIsEstimateModalClosing(false);
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsEstimateModalOpen(false);
+        setIsEstimateModalClosing(true);
       }
     };
 
@@ -55,6 +62,29 @@ export default function AideFinancePage() {
 
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isEstimateModalOpen]);
+
+  useEffect(() => {
+    if (!isEstimateModalClosing) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setIsEstimateModalOpen(false);
+      setIsEstimateModalRendered(false);
+      setIsEstimateModalClosing(false);
+    }, MODAL_EXIT_DURATION_MS);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [isEstimateModalClosing]);
+
+  const openEstimateModal = () => {
+    setIsEstimateModalClosing(false);
+    setIsEstimateModalOpen(true);
+  };
+
+  const closeEstimateModal = () => {
+    setIsEstimateModalClosing(true);
+  };
 
   return (
     <div className="formation-page">
@@ -81,7 +111,7 @@ export default function AideFinancePage() {
               <button
                 type="button"
                 className="button button--primary"
-                onClick={() => setIsEstimateModalOpen(true)}
+                onClick={openEstimateModal}
                 aria-haspopup="dialog"
          
               >
@@ -90,7 +120,7 @@ export default function AideFinancePage() {
             </div>
             <div className="formation-hero__media">
               <Image
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYW1pbHklMjBidWRnZXR8ZW58MXx8fHwxNzYyNTkzMDAwfDA&ixlib=rb-4.1.0&q=80&w=1080"
+                src="/asset/family-budget.jpg"
                 alt="Parent préparant un budget familial"
                 className="formation-hero__image"
                 width={1080}
@@ -103,9 +133,9 @@ export default function AideFinancePage() {
         </div>
       </section>
 
-      {isEstimateModalOpen ? (
+      {isEstimateModalRendered ? (
         <div
-          className="footer-modal finance-modal"
+          className={`footer-modal finance-modal${isEstimateModalClosing ? " is-closing" : " is-open"}`}
           role="dialog"
           aria-modal="true"
           aria-labelledby="estimate-modal-title"
@@ -113,7 +143,7 @@ export default function AideFinancePage() {
           <button
             type="button"
             className="footer-modal__overlay"
-            onClick={() => setIsEstimateModalOpen(false)}
+            onClick={closeEstimateModal}
             aria-label="Fermer la fenetre"
           />
           <div className="footer-modal__content finance-modal__content" role="document">
@@ -140,7 +170,7 @@ export default function AideFinancePage() {
               <button
                 type="button"
                 className="footer-modal__close"
-                onClick={() => setIsEstimateModalOpen(false)}
+                onClick={closeEstimateModal}
               >
                 Fermer
               </button>
@@ -258,6 +288,7 @@ export default function AideFinancePage() {
               width={176}
               height={176}
               sizes="9rem"
+              loading="lazy"
             />
             <div className="formation-banner__text">
               <h2>Pourquoi cette rubrique ?</h2>
