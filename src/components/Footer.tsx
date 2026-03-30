@@ -6,9 +6,12 @@ import { useEffect, useId, useRef, useState, type MouseEvent } from "react";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 type FooterModal = "legal" | "sitemap" | "contact" | null;
+const MODAL_EXIT_DURATION_MS = 260;
 
 export function Footer() {
   const [activeModal, setActiveModal] = useState<FooterModal>(null);
+  const [renderedModal, setRenderedModal] = useState<FooterModal>(null);
+  const [isModalClosing, setIsModalClosing] = useState(false);
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
@@ -18,15 +21,25 @@ export function Footer() {
 
   useEffect(() => {
     if (!activeModal) {
-      lastTriggerRef.current?.focus();
       return;
     }
 
+    setRenderedModal(activeModal);
+    setIsModalClosing(false);
     closeButtonRef.current?.focus();
+  }, [activeModal]);
+
+  useEffect(() => {
+    if (!renderedModal) {
+      if (!activeModal) {
+        lastTriggerRef.current?.focus();
+      }
+      return;
+    }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setActiveModal(null);
+        setIsModalClosing(true);
         return;
       }
 
@@ -56,7 +69,34 @@ export function Footer() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeModal]);
+  }, [activeModal, renderedModal]);
+
+  useEffect(() => {
+    if (!isModalClosing) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setRenderedModal(null);
+      setActiveModal(null);
+      setIsModalClosing(false);
+    }, MODAL_EXIT_DURATION_MS);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [isModalClosing]);
+
+  const openModal = (
+    modal: Exclude<FooterModal, null>,
+    trigger: HTMLButtonElement
+  ) => {
+    lastTriggerRef.current = trigger;
+    setIsModalClosing(false);
+    setActiveModal(modal);
+  };
+
+  const closeModal = () => {
+    setIsModalClosing(true);
+  };
 
   const footerLinks: Array<{
     label: string;
@@ -145,7 +185,9 @@ export function Footer() {
     { label: "Site officiel", value: "lagrandeclasse.fr", href: "https://lagrandeclasse.fr/" },
   ];
 
-  const modalContent = activeModal === "legal"
+  const modalKey = renderedModal ?? activeModal;
+
+  const modalContent = modalKey === "legal"
     ? {
         title: "Mentions legales",
         titleId: legalTitleId,
@@ -174,7 +216,7 @@ export function Footer() {
           </div>
         ),
       }
-    : activeModal === "sitemap"
+    : modalKey === "sitemap"
       ? {
           title: "Plan du site",
           titleId: sitemapTitleId,
@@ -186,7 +228,7 @@ export function Footer() {
                     <Link
                       href={link.href}
                       className="footer-modal__link"
-                      onClick={() => setActiveModal(null)}
+                      onClick={closeModal}
                     >
                       {link.label}
                     </Link>
@@ -196,7 +238,7 @@ export function Footer() {
             </div>
           ),
         }
-      : activeModal === "contact"
+      : modalKey === "contact"
         ? {
             title: "Contact",
             titleId: contactTitleId,
@@ -259,8 +301,7 @@ export function Footer() {
                         className="footer__link footer__link--button"
                         aria-label={link.label}
                         onClick={(event: MouseEvent<HTMLButtonElement>) => {
-                          lastTriggerRef.current = event.currentTarget;
-                          setActiveModal(link.modal ?? null);
+                          openModal(link.modal ?? "legal", event.currentTarget);
                         }}
                         // aria-expanded={activeModal === link.modal ? "true" : "false"}
                         aria-haspopup="dialog"
@@ -303,7 +344,7 @@ export function Footer() {
 
           {modalContent ? (
             <div
-              className="footer-modal"
+              className={`footer-modal${isModalClosing ? " is-closing" : " is-open"}`}
               role="dialog"
               aria-modal="true"
               aria-labelledby={modalContent.titleId}
@@ -311,7 +352,7 @@ export function Footer() {
               <button
                 type="button"
                 className="footer-modal__overlay"
-                onClick={() => setActiveModal(null)}
+                onClick={closeModal}
                 aria-label="Fermer la fenetre"
               />
               <div className="footer-modal__content" role="document" ref={dialogRef}>
@@ -325,13 +366,14 @@ export function Footer() {
                       width={44}
                       height={44}
                       sizes="2.75rem"
+                      loading="lazy"
                     />
                     {modalContent.title}
                   </h2>
                   <button
                     type="button"
                     className="footer-modal__close"
-                    onClick={() => setActiveModal(null)}
+                    onClick={closeModal}
                     ref={closeButtonRef}
                   >
                     Fermer

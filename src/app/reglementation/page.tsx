@@ -61,7 +61,7 @@ export default function ReglementationPage() {
             </div>
             <div className="formation-hero__media">
               <Image
-                src="https://images.unsplash.com/photo-1567746455504-cb3213f8f5b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVzY2hvb2wlMjBjbGFzc3Jvb218ZW58MXx8fHwxNzYxNDA1MzgxfDA&ixlib=rb-4.1.0&q=80&w=1080"
+                src="/asset/preschool-classroom.jpg"
                 alt="Espace d'accueil en petite enfance"
                 className="formation-hero__image"
                 width={1080}
@@ -101,6 +101,7 @@ export default function ReglementationPage() {
                 width={176}
                 height={176}
                 sizes="9rem"
+                loading="lazy"
               />
             <div className="formation-banner__text">
               <h2>Pourquoi cette rubrique ?</h2>
