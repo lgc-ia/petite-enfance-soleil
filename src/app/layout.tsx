@@ -5,6 +5,7 @@ import "@/styles/semantic.css";
 import "@/styles/components.css";
 import { HeaderWrapper } from "@/components/HeaderWrapper";
 import { Footer } from "@/components/Footer";
+import { ChatbotModal } from "@/components/ChatbotModal";
 import { Poppins, Open_Sans, Baloo_2 } from "next/font/google";
 
 const poppins = Poppins({
@@ -59,6 +60,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <ChatbotModal />
         </div>
       </body>
     </html>
