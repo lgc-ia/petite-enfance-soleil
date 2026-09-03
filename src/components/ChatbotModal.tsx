@@ -97,7 +97,6 @@ function renderContent(text: string) {
 }
 
 const WELCOME_SUGGESTIONS = [
-  'Quelles sont les normes d\'encadrement en crèche ?',
   'Comment obtenir l\'agrément assistante maternelle ?',
   'Quelles aides financières pour la garde d\'enfant ?',
 ];
